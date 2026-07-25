@@ -5,6 +5,10 @@ from models import db
 
 api_bp = Blueprint('api', __name__)
 
+@api_bp.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "alive", "message": "Server is running!"}), 200
+
 @api_bp.route('/audit', methods=['POST'])
 def audit():
     data = request.get_json()
