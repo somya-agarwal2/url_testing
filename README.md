@@ -249,9 +249,9 @@ The API is built to gracefully handle unstable web environments. The frontend wi
 
 ## 👨‍💻 Author
 
-**[Your Name]**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
+**Somya Agarwal**
+- GitHub: [@somya-agarwal2](https://github.com/somya-agarwal2)
+- LinkedIn: [Somya Agarwal](https://linkedin.com/in/somya-agarwal2)
 
 ---
 
