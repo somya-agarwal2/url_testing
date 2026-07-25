@@ -1,166 +1,260 @@
 # Page Pulse – Website Audit Tool
 
-![Page Pulse](/screenshots/hero.png)
+<div align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask" />
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/BeautifulSoup-000000?style=for-the-badge&logo=beautifulsoup&logoColor=white" alt="BeautifulSoup" />
+  <img src="https://img.shields.io/badge/Pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white" alt="Pytest" />
+  <img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="MIT License" />
+</div>
 
-Page Pulse is a modern, full-stack website auditing application. Users can enter any website URL and instantly receive technical and SEO-related insights in a beautiful, SaaS-style dashboard.
+<br />
 
-## Features
+Page Pulse is a high-performance, full-stack website analysis tool designed to instantly evaluate the technical health and search engine visibility of any public webpage. By simply providing a URL, the system dynamically fetches the page, parses the HTML structure, and generates a comprehensive audit report detailing critical SEO metrics, accessibility faults, and response performance.
 
-*   **Instant SEO Analysis**: Extracts Page Title, Meta Description, and H1 tags count.
-*   **Performance Metrics**: Measures the server response time.
-*   **Content Insights**: Calculates approximate word count and identifies images missing `alt` attributes.
-*   **Technical Details**: Displays HTTP/HTTPS protocol, status code, and content type.
-*   **Audit History**: Automatically saves your audit history in a local SQLite database for easy access later.
-*   **Beautiful UI/UX**: Designed with a premium dark mode, glassmorphism aesthetics, soft shadows, and Framer Motion animations.
+---
 
-## Tech Stack
+## 📑 Table of Contents
 
-**Frontend:**
-*   React.js (Vite)
-*   Tailwind CSS (Styling)
-*   Framer Motion (Animations)
-*   Axios (HTTP Client)
-*   Lucide React (Icons)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [How It Works](#-how-it-works)
+- [API Documentation](#-api-documentation)
+- [Installation](#-installation)
+- [Run Tests](#-run-tests)
+- [Error Handling](#-error-handling)
+- [Design Decisions](#-design-decisions)
+- [Screenshots](#-screenshots)
+- [Future Improvements](#-future-improvements)
+- [Author](#-author)
+- [License](#-license)
 
-**Backend:**
-*   Python (Flask)
-*   BeautifulSoup4 (HTML Parsing)
-*   Requests (Web Requests)
-*   SQLAlchemy & SQLite (Database)
-*   Pytest (Testing)
+---
 
-## Folder Structure
+## ✨ Features
 
-```
-Page Pulse/
-│
+- **Analyze Any Website URL:** Instantly scan any public web address.
+- **HTTP Status & Protocol Detection:** Verify server health (e.g., 200 OK) and connection security (HTTPS).
+- **Response Time Measurement:** Accurate latency tracking for server responses.
+- **SEO Metric Extraction:** Automated retrieval of Page Titles and Meta Descriptions.
+- **Content Analysis:** Dynamic Word Count and `<h1>` Tag Count evaluations.
+- **Accessibility Checks:** Detection of images missing `alt` attributes.
+- **Proprietary SEO Score:** Algorithmic grading based on technical health parameters.
+- **Report Export:** Instantly **Copy JSON** or **Download JSON** for external use.
+- **Modern UX:** Sleek loading animations and a responsive, high-fidelity light theme interface.
+- **Robust Error Handling:** Graceful degradation for invalid URLs, timeouts, and non-HTML content.
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- **React** (Component-based UI)
+- **Vite** (Lightning-fast build tool)
+- **Tailwind CSS** (Utility-first styling)
+- **Axios** (HTTP client for API interactions)
+
+### Backend
+- **Flask** (Lightweight WSGI Python web application framework)
+- **BeautifulSoup4** (HTML parsing and extraction)
+- **Requests** (Synchronous HTTP requests for fetching pages)
+
+### Testing & Deployment
+- **Pytest** (Backend unit and integration testing)
+- **Vercel** (Frontend Hosting)
+- **Render** (Backend Hosting)
+
+---
+
+## 📂 Project Structure
+
+```text
+.
 ├── backend/
-│   ├── app.py                 # Flask App Initialization
-│   ├── requirements.txt       # Python dependencies
-│   ├── models/                # SQLAlchemy Models (audit.py)
-│   ├── routes/                # API Endpoints (api.py)
-│   ├── services/              # Business Logic & HTML Parsing (auditor.py)
-│   ├── tests/                 # Pytest cases
-│   └── instance/              # SQLite Database (auto-generated)
-│
+│   ├── models/           # Data models and structures
+│   ├── routes/           # Flask API endpoints
+│   ├── services/         # Core auditing logic and HTML parsing
+│   ├── tests/            # Pytest test suites
+│   ├── app.py            # Flask application entry point
+│   └── requirements.txt  # Python dependencies
 ├── frontend/
-│   ├── index.html             # HTML template
-│   ├── tailwind.config.js     # Tailwind Configuration
+│   ├── public/           # Static assets
 │   ├── src/
-│   │   ├── main.jsx           # React Entry Point
-│   │   ├── App.jsx            # Main App Layout
-│   │   ├── components/        # Reusable UI Components
-│   │   ├── pages/             # Application Pages (Home.jsx)
-│   │   ├── services/          # API Communication (api.js)
-│   │   └── index.css          # Base CSS & Tailwind Layers
-│   └── package.json           # Node dependencies
-│
-└── README.md                  # Project Documentation
+│   │   ├── components/   # Reusable UI React components
+│   │   ├── pages/        # Main route views
+│   │   ├── services/     # API integration logic
+│   │   ├── App.jsx       # Root React component
+│   │   └── main.jsx      # React DOM rendering
+│   ├── package.json      # Node dependencies
+│   ├── tailwind.config.js# Tailwind theme configuration
+│   └── vite.config.js    # Vite bundler configuration
+├── .gitignore
+└── README.md
 ```
 
-## Installation
+---
 
-Follow these steps to run the project locally.
+## 🔄 How It Works
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/yourusername/page-pulse.git
-cd page-pulse
-```
+The architecture follows a decoupled client-server model to ensure fast, scalable processing:
 
-### 2. Backend Setup
-```bash
-cd backend
+1. **User enters URL** in the React frontend.
+2. **↓ Frontend sends POST request** via Axios to the backend API.
+3. **↓ Flask fetches webpage** using the Python `requests` library.
+4. **↓ BeautifulSoup parses HTML** to construct a navigable DOM tree.
+5. **↓ Backend extracts metrics** (Title, Meta, Word Count, Accessibility).
+6. **↓ JSON returned** with the calculated SEO score and structured data.
+7. **↓ Frontend displays report** in a clean, professional dashboard.
 
-# Create a virtual environment
-python -m venv venv
+---
 
-# Activate the virtual environment (Windows)
-.\venv\Scripts\activate
-# Activate the virtual environment (Mac/Linux)
-# source venv/bin/activate
+## 📡 API Documentation
 
-# Install dependencies
-pip install -r requirements.txt
+### **Analyze Endpoint**
 
-# Run the Flask server
-python app.py
-```
-*The backend server will run on `http://localhost:5000`.*
+Initiates a technical audit on a specified URL.
 
-### 3. Frontend Setup
-```bash
-cd frontend
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/analyze` | Returns a JSON report of the audited website. |
 
-# Install dependencies
-npm install
+#### **Request Example**
 
-# Run the Vite development server
-npm run dev
-```
-*The frontend will run on `http://localhost:5173`.*
-
-## API Documentation
-
-### POST `/audit`
-Analyzes a given URL and returns SEO and technical metrics.
-**Request Body:**
 ```json
 {
   "url": "https://example.com"
 }
 ```
-**Success Response (200 OK):**
+
+#### **Response Example**
+
 ```json
 {
-  "status": 200,
-  "response_time": 245,
+  "status_code": 200,
+  "protocol": "HTTPS",
+  "response_time": "124ms",
   "title": "Example Domain",
-  "meta_description": "...",
+  "meta_description": "None",
+  "word_count": 215,
   "h1_count": 1,
-  "total_images": 8,
-  "missing_alt": 2,
-  "word_count": 530,
-  "content_type": "text/html",
-  "protocol": "HTTPS"
+  "images_missing_alt": 0,
+  "seo_score": 98
 }
 ```
 
-### GET `/history`
-Retrieves the 50 most recent audits from the database.
-**Success Response (200 OK):**
-```json
-[
-  {
-    "id": 1,
-    "url": "https://example.com",
-    "status": 200,
-    "response_time": 245,
-    "title": "Example Domain",
-    "created_at": "2023-10-25T14:30:00.000000"
-  }
-]
-```
+---
 
-## Testing
+## 🚀 Installation
 
-The backend includes a comprehensive `pytest` test suite that uses `unittest.mock` to simulate HTTP responses and exceptions without relying on real internet connectivity.
+Follow these steps to run the project locally.
 
-To run the tests:
+### Backend Setup
+
 ```bash
+# Navigate to the backend directory
 cd backend
-# Make sure the virtual environment is activated
-pytest
-```
 
-To run the tests with verbose output (showing each individual test passing):
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Start the Flask development server
+python app.py
+```
+*The backend will run on `http://localhost:5000`*
+
+### Frontend Setup
+
 ```bash
+# Navigate to the frontend directory
+cd frontend
+
+# Install Node dependencies
+npm install
+
+# Start the Vite development server
+npm run dev
+```
+*The frontend will run on `http://localhost:5173`*
+
+---
+
+## 🧪 Run Tests
+
+The backend includes a comprehensive test suite to ensure the reliability of the auditing logic.
+
+```bash
+# Run all tests
+pytest
+
+# Run tests with verbose output
 pytest -v
 ```
 
-## Future Improvements
+**Test Coverage Includes:**
+- Successful URL analysis and metric extraction.
+- Validation of the SEO Score calculation logic.
+- HTTP error simulations (404 Not Found, 500 Internal Server Error).
+- Edge cases (e.g., Non-HTML content types, connection timeouts, invalid URL formats).
 
-*   **Authentication**: Add user accounts to save personal audit histories.
-*   **Advanced SEO Metrics**: Include checks for robots.txt, sitemaps, and canonical tags.
-*   **Export Reports**: Allow users to export audit reports as PDF or CSV.
-*   **Lighthouse Integration**: Integrate with Google Lighthouse API for performance scoring.
+---
+
+## ⚠️ Error Handling
+
+The API is built to gracefully handle unstable web environments. The frontend will display specific error states for:
+
+- **Invalid URL:** Malformed strings or missing schemas.
+- **Connection Error:** Unreachable domains or DNS failures.
+- **Timeout:** Servers taking too long to respond.
+- **404 Pages:** Valid domains but missing paths.
+- **500 Pages:** Target server internal errors.
+- **Non-HTML Content:** Attempting to analyze PDFs, images, or raw JSON instead of web pages.
+
+---
+
+## 💡 Design Decisions
+
+- **Flask:** Chosen for its lightweight, micro-framework architecture. Since the backend strictly serves as a REST API processor for HTML fetching without needing a complex ORM or templating engine, Flask provided the fastest development velocity and lowest overhead.
+- **BeautifulSoup4:** Selected as the HTML parser due to its resilience with malformed markup. It is the industry standard for Python web scraping and reliably extracts DOM elements faster than headless browser alternatives (like Puppeteer/Selenium) when JS execution isn't strictly required.
+- **React + Tailwind CSS:** React allows for an interactive, state-driven dashboard experience (essential for loading states and error handling), while Tailwind CSS enables rapid implementation of a premium, enterprise-grade design system without bloated custom CSS files.
+- **SEO Score Calculation:** The SEO score is an algorithmic baseline starting at 100. Points are deducted based on critical technical faults (e.g., -10 for missing Page Title, -15 for missing H1 tags, -5 for missing image alt attributes). This gives users immediate, actionable feedback on their site's health.
+
+---
+
+## 📸 Screenshots
+
+| Landing Page | Loading State |
+| :---: | :---: |
+| *[Screenshot Placeholder]* | *[Screenshot Placeholder]* |
+
+| Audit Report | Error Handling |
+| :---: | :---: |
+| *[Screenshot Placeholder]* | *[Screenshot Placeholder]* |
+
+*(Replace placeholders with actual images by uploading them to the repository's `assets/` folder and linking them here).*
+
+---
+
+## 🚀 Future Improvements
+
+- **Lighthouse Integration:** Connect to Google's Lighthouse API for deeper Core Web Vitals metrics.
+- **PDF Export:** Allow users to download visually formatted PDF reports for clients.
+- **Historical Reports:** Implement a database (e.g., PostgreSQL) to track a website's health over time.
+- **Multi-page Crawl:** Expand the tool to crawl an entire domain map rather than a single URL.
+- **Performance Charts:** Visualize response time latency and DOM size using Recharts.
+
+---
+
+## 👨‍💻 Author
+
+**[Your Name]**
+- GitHub: [@yourusername](https://github.com/yourusername)
+- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
