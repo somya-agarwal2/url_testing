@@ -181,6 +181,29 @@ npm run dev
 
 ---
 
+## 🌐 Deployment
+
+The project is pre-configured for seamless deployment to Vercel (Frontend) and Render (Backend).
+
+### Backend (Render)
+1. Create a new **Web Service** on Render and connect your GitHub repository.
+2. Set the Root Directory to `backend`.
+3. Set the Build Command: `pip install -r requirements.txt`
+4. Set the Start Command: `gunicorn app:app`
+5. Add the following Environment Variables in the Render dashboard:
+   - `FRONTEND_URL`: URL of your deployed Vercel frontend.
+   - `PYTHON_VERSION`: `3.12.6` (or your local python version)
+
+### Frontend (Vercel)
+1. Create a new **Project** on Vercel and connect your GitHub repository.
+2. Set the Framework Preset to **Vite**.
+3. Set the Root Directory to `frontend`.
+4. Add the following Environment Variable in the Vercel dashboard:
+   - `VITE_API_URL`: URL of your deployed Render backend (e.g., `https://pagepulse-api.onrender.com`).
+5. Click **Deploy**. Vercel will automatically run `npm install` and `npm run build`.
+
+---
+
 ## 🧪 Run Tests
 
 The backend includes a comprehensive test suite to ensure the reliability of the auditing logic.

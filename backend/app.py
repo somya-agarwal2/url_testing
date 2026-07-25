@@ -3,10 +3,17 @@ from flask import Flask
 from flask_cors import CORS
 from models import db
 from routes.api import api_bp
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 def create_app(test_config=None):
     app = Flask(__name__)
-    CORS(app)
+    
+    # Configure dynamic CORS
+    frontend_url = os.environ.get('FRONTEND_URL', 'http://localhost:5173')
+    CORS(app, origins=[frontend_url, "http://localhost:5173", "http://127.0.0.1:5173"])
     
     # Configure Database
     if test_config:
@@ -29,6 +36,10 @@ def create_app(test_config=None):
         
     return app
 
+# Expose global application instance for Gunicorn
+app = create_app()
+
 if __name__ == '__main__':
-    app = create_app()
-    app.run(debug=True, port=5000)
+    # Render assigns a dynamic port via the PORT environment variable
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
