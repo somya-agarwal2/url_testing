@@ -227,13 +227,13 @@ The API is built to gracefully handle unstable web environments. The frontend wi
 
 | Landing Page | Loading State |
 | :---: | :---: |
-| *[Screenshot Placeholder]* | *[Screenshot Placeholder]* |
+| ![Landing Page](assets/landing-page.png) | ![Loading State](assets/loading-state.png) |
 
 | Audit Report | Error Handling |
 | :---: | :---: |
-| *[Screenshot Placeholder]* | *[Screenshot Placeholder]* |
+| ![Audit Report](assets/audit-report.png) | ![Error Handling](assets/error-handling.png) |
 
-*(Replace placeholders with actual images by uploading them to the repository's `assets/` folder and linking them here).*
+*(Note: Add your actual screenshot files into the `assets/` folder with the names `landing-page.png`, `loading-state.png`, `audit-report.png`, and `error-handling.png` to make them visible here).*
 
 ---
 
