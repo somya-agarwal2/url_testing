@@ -225,15 +225,14 @@ The API is built to gracefully handle unstable web environments. The frontend wi
 
 ## 📸 Screenshots
 
-| Landing Page | Loading State |
-| :---: | :---: |
-| ![Landing Page](assets/image.png) | ![Loading State](assets/image%20copy.png) |
-
-| Audit Report | Error Handling |
-| :---: | :---: |
-| ![Audit Report](assets/image%20copy%202.png) | ![Error Handling](assets/image%20copy%203.png) |
-
-*(Note: Add your actual screenshot files into the `assets/` folder with the names `landing-page.png`, `loading-state.png`, `audit-report.png`, and `error-handling.png` to make them visible here).*
+<p align="center">
+  <img src="assets/image.png" width="48%" />
+  <img src="assets/image%20copy.png" width="48%" />
+</p>
+<p align="center">
+  <img src="assets/image%20copy%202.png" width="48%" />
+  <img src="assets/image%20copy%203.png" width="48%" />
+</p>
 
 ---
 
